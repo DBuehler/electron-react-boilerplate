@@ -1,11 +1,20 @@
 import fs from 'fs';
 import path from 'path';
-import rimraf from 'rimraf';
+// import rimraf from 'rimraf';
 import webpackPaths from '../configs/webpack.paths';
 
+const deleteStarJsMapFiles = (directory) => {
+  const starJsMapRegex = /[.]js[.]map$/;
+  fs.readdirSync(directory)
+    .filter((f) => starJsMapRegex.test(f))
+    .map((f) => fs.unlinkSync(path.join(directory, f)));
+};
+
 export default function deleteSourceMaps() {
-  if (fs.existsSync(webpackPaths.distMainPath))
-    rimraf.sync(path.join(webpackPaths.distMainPath, '*.js.map'));
-  if (fs.existsSync(webpackPaths.distRendererPath))
-    rimraf.sync(path.join(webpackPaths.distRendererPath, '*.js.map'));
+  if (fs.existsSync(webpackPaths.distMainPath)) {
+    deleteStarJsMapFiles(webpackPaths.distMainPath);
+  }
+  if (fs.existsSync(webpackPaths.distRendererPath)) {
+    deleteStarJsMapFiles(webpackPaths.distRendererPath);
+  }
 }
