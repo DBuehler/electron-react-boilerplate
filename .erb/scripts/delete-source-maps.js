@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-// import rimraf from 'rimraf';
 import webpackPaths from '../configs/webpack.paths';
 
 const deleteStarJsMapFiles = (directory) => {
