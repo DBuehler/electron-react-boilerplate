@@ -4,9 +4,8 @@
  */
 body {
   position: relative;
-  color: white;
+  color: cadetblue;
   height: 100vh;
-  background-color: cadetblue;
   font-family: sans-serif;
   overflow-y: hidden;
   display: flex;
