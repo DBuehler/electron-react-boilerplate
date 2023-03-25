@@ -6,12 +6,13 @@ body {
   position: relative;
   color: white;
   height: 100vh;
-  background: linear-gradient(
+  background-color: cadetblue;
+  /* background: linear-gradient(
     200.96deg,
     #fedc2a -29.09%,
     #dd5789 51.77%,
     #7a2c9e 129.35%
-  );
+  ); */
   font-family: sans-serif;
   overflow-y: hidden;
   display: flex;
@@ -19,7 +20,7 @@ body {
   align-items: center;
 }
 
-button {
+/* button {
   background-color: white;
   padding: 10px 20px;
   border-radius: 10px;
@@ -52,7 +53,7 @@ a {
 a:hover {
   opacity: 1;
   text-decoration: none;
-}
+} */
 
 .Hello {
   display: flex;
