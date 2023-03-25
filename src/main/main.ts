@@ -31,6 +31,14 @@ ipcMain.on('ipc-example', async (event, arg) => {
   event.reply('ipc-example', msgTemplate('pong'));
 });
 
+let pingCount = 0;
+
+ipcMain.handle('ping1', () => {
+  pingCount += 1;
+  console.log(`main.ts handling ping1 invocation, pingCount = ${pingCount}`);
+  return pingCount;
+});
+
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
   sourceMapSupport.install();

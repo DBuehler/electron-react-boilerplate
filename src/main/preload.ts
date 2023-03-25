@@ -5,7 +5,7 @@ import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
 export type Channels = 'ipc-example';
 
 const electronHandler = {
-  ipcRenderer: {
+  ipcRendererForwards: {
     sendMessage(channel: Channels, args: unknown[]) {
       ipcRenderer.send(channel, args);
     },
@@ -24,6 +24,16 @@ const electronHandler = {
   },
 };
 
+const ipcCalls = {
+  ipcCalls: {
+    invokePing1() {
+      return ipcRenderer.invoke('ping1');
+    },
+  },
+};
+
 contextBridge.exposeInMainWorld('electron', electronHandler);
+contextBridge.exposeInMainWorld('ipc', ipcCalls);
 
 export type ElectronHandler = typeof electronHandler;
+export type IpcCalls = typeof ipcCalls;
